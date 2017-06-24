@@ -100,6 +100,5 @@ class MachineController extends Controller
 		$machine->isDelete = 1;
 		$machine->update();
 		return redirect('machinery')->with('status', 'Machine Deleted Successfully');
-
 	}
 }

@@ -44,7 +44,13 @@ Route::post('/create_user', 'UserController@create');
 Route::get('/edit_user/{id}', 'UserController@edit');
 Route::post('/create_user/{id}', 'UserController@update');
 Route::get('/delete_user/{id}', 'UserController@destroy');
-
+//Country routes
+Route::get('/country', 'CountryController@index');
+Route::get('/add_country', 'CountryController@add');
+Route::post('/create_country', 'CountryController@create');
+Route::get('/edit_country/{id}', 'CountryController@edit');
+Route::post('/create_country/{id}', 'CountryController@update');
+Route::get('/delete_country/{id}', 'CountryController@destroy');
 
 
 
