@@ -57,7 +57,13 @@ Route::get('/add_state', 'StateController@add');
 Route::post('/create_state', 'StateController@create');
 Route::get('/edit_state/{id}', 'StateController@edit');
 Route::post('/create_state/{id}', 'StateController@update');
-Route::get('/delete_state/{id}', 'StateController@destroy');
+//City routes
+Route::get('/city', 'CityController@index');
+Route::get('/add_city', 'CityController@add');
+Route::post('/create_city', 'CityController@create');
+Route::get('/edit_city/{id}', 'CityController@edit');
+Route::post('/create_city/{id}', 'CityController@update');
+Route::get('/delete_city/{id}', 'CityController@destroy');
 
 
 
