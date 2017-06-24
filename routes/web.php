@@ -51,6 +51,13 @@ Route::post('/create_country', 'CountryController@create');
 Route::get('/edit_country/{id}', 'CountryController@edit');
 Route::post('/create_country/{id}', 'CountryController@update');
 Route::get('/delete_country/{id}', 'CountryController@destroy');
+//State routes
+Route::get('/state', 'StateController@index');
+Route::get('/add_state', 'StateController@add');
+Route::post('/create_state', 'StateController@create');
+Route::get('/edit_state/{id}', 'StateController@edit');
+Route::post('/create_state/{id}', 'StateController@update');
+Route::get('/delete_state/{id}', 'StateController@destroy');
 
 
 
