@@ -19,7 +19,7 @@
             height: 100vh;
             margin: 0;
         }
-        .head-block{margin: 150px 0px;}
+        .head-block{margin: 140px 0px;}
         .content {text-align: center;font-weight: bold;}
         .title {font-size: 80px;font-weight: bold;}
         .links > a {
