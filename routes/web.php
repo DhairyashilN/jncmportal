@@ -42,6 +42,7 @@ Route::get('/delete_customer/{id}', 'CustomerController@destroy');
 Route::get('/users', 'UserController@index');
 Route::get('/add_user', 'UserController@add');
 Route::post('/create_user', 'UserController@create');
+Route::post('checkuser', 'UserController@check');
 Route::get('/edit_user/{id}', 'UserController@edit');
 Route::post('/create_user/{id}', 'UserController@update');
 Route::get('/delete_user/{id}', 'UserController@destroy');

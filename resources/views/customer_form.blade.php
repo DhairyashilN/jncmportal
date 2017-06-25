@@ -88,7 +88,7 @@
                       </select>
                     </div>
                     <div class="form-group">
-                       <label for="exampleInputEmail1">contact</label>
+                       <label for="exampleInputEmail1">Contact</label>
                        <input class="form-control" id="contact" placeholder="" type="text" name="contact">
                      </div>
                      <div class="form-group">

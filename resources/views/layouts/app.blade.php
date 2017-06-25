@@ -96,6 +96,8 @@
     <script src="{{ asset('assets/js/plugins/datepicker/datepicker.js') }}" type="text/javascript"></script>
     <!-- Select2  -->
     <script src="{{ asset('assets/js/plugins/select2/select2.min.js') }}" type="text/javascript"></script>
+    <!--custom validations-->
+    <script src="{{ asset('assets/js/validations.js') }}" type="text/javascript"></script>
     <!-- page script -->
     <script type="text/javascript">
         $(function() {

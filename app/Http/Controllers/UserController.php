@@ -114,7 +114,11 @@ class UserController extends Controller
         $user->isDelete = 1;
         $user->update();
         return redirect('users')->with('status', 'User Deleted Successfully');
+    }
 
+    public function check(Request $request)
+    {
+        dd($request);
     }
 
 }
