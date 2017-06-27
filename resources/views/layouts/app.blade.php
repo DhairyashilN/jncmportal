@@ -113,7 +113,7 @@
         });
     // When the document is ready
     $(document).ready(function () {
-        $('#enq_date').datepicker({
+        $('#enq_date,#followupdate').datepicker({
             format: "dd/mm/yyyy"
         });
 

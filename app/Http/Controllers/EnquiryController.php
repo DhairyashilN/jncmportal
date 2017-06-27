@@ -24,7 +24,7 @@ class EnquiryController extends Controller
      */
     public function index()
     {
-    	$enquiries = Customerenquiry::where('isDelete',0)->get();
+    	$enquiries = Customerenquiry::where('isDelete',0)->orderBy('id', 'desc')->get();
     	return view('enquiries',['enquiries' => $enquiries]);
     }
 
@@ -51,8 +51,9 @@ class EnquiryController extends Controller
     		'address' => 'required',
     		'contact1' => 'required',
     		'enq_date' => 'required',
-    		'enq_time' => 'required',
-    		]);
+            'comments' => 'required',
+            'followupdate' => 'required',
+            ]);
         // save enquiry record in products table.
     	$enquiry          			= new Customerenquiry;
     	$enquiry->customer_name    	= $request['customer_name'];
@@ -61,9 +62,10 @@ class EnquiryController extends Controller
     	$enquiry->contact2    		= isset($request['contact2'])? $request['contact2'] : '';
     	$enquiry->email    			= isset($request['email'])? $request['email'] : '';
     	$enquiry->enquiry_date    	= $request['enq_date'];
-    	$enquiry->enquiry_time    	= $request['enq_time'];
-    	$enquiry->save();
-    	return redirect('enquiries')->with('status', 'Enquiry Added Successfully');
+        $enquiry->comments          = $request['comments'];
+        $enquiry->followup_date    	= $request['followupdate'];
+        $enquiry->save();
+        return redirect('enquiries')->with('status', 'Enquiry Added Successfully');
     }
 
     /**
@@ -92,8 +94,9 @@ class EnquiryController extends Controller
     		'address' => 'required',
     		'contact1' => 'required',
     		'enq_date' => 'required',
-    		'enq_time' => 'required',
-    	]);
+    		'comments' => 'required',
+            'followupdate' => 'required',
+            ]);
 
     	$enquiry          			= Customerenquiry::find($id);
     	$enquiry->customer_name    	= $request['customer_name'];
@@ -102,9 +105,10 @@ class EnquiryController extends Controller
     	$enquiry->contact2    		= isset($request['contact2'])? $request['contact2'] : '';
     	$enquiry->email    			= isset($request['email'])? $request['email'] : '';
     	$enquiry->enquiry_date    	= $request['enq_date'];
-    	$enquiry->enquiry_time    	= $request['enq_time'];
-    	$enquiry->update();
-    	return redirect('enquiries')->with('status', 'Enquiry Updated Successfully');;
+    	$enquiry->comments          = $request['comments'];
+        $enquiry->followup_date     = $request['followupdate'];
+        $enquiry->update();
+        return redirect('enquiries')->with('status', 'Enquiry Updated Successfully');;
     }
 
 
@@ -115,14 +119,14 @@ class EnquiryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-	public function destroy($id=" ")
-	{
+    public function destroy($id=" ")
+    {
         // delete machine record.
-		$enquiry 		= Customerenquiry::find($id);
+      $enquiry 		= Customerenquiry::find($id);
     	//dd($machine);
-		$enquiry->isDelete = 1;
-		$enquiry->update();
-		return redirect('enquiries')->with('status', 'Enquiry Deleted Successfully');
+      $enquiry->isDelete = 1;
+      $enquiry->update();
+      return redirect('enquiries')->with('status', 'Enquiry Deleted Successfully');
 
-	}
+  }
 }

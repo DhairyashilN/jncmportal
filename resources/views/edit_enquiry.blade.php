@@ -40,52 +40,67 @@
                             <!-- Tab panes -->
                             <div class="tab-content">
                               <div role="tabpanel" class="tab-pane active" id="add">
-                              @foreach($enquiry as $enq)
-                                <form role="form" action="{{ url('create_enquiry/'.$enq['id'])}}" method="post">
+                                @foreach($enquiry as $enq)
+                                <form class="form-horizontal" role="form" action="{{ url('create_enquiry/'.$enq['id'])}}" method="post">
                                   {{csrf_field()}}
                                   <div class="box-body">
-                                    <div class="form-group">
-                                     <label for="exampleInputEmail1">Customer Name</label>
-                                     <input class="form-control" id="customer_name" placeholder="" type="text" name="customer_name" value="{{$enq['customer_name']}}" required>
+                                  <div class="form-group">
+                                    <label for="exampleInputEmail1" class="col-lg-2">Customer Name</label>
+                                    <div class="col-lg-10">
+                                    <input class="form-control" id="customer_name" placeholder="" type="text" name="customer_name"  value="{{$enq['customer_name']}}" required>
                                    </div>
-                                   <div class="form-group">
-                                     <label for="exampleInputFile">Address</label>
+                                 </div>
+                                 <div class="form-group">
+                                   <label for="exampleInputFile" class="col-lg-2">Address</label>
+                                   <div class="col-lg-10">
                                      <textarea class="form-control" name="address" rows="5" id="address">{{$enq['address']}}</textarea>
                                    </div>
-                                   <div class="form-group">
-                                   <label for="exampleInputEmail1">Contact No</label>
+                                 </div>
+                                 <div class="form-group">
+                                   <label for="exampleInputEmail1" class="col-lg-2">Contact No</label>
+                                   <div class="col-lg-4">
                                      <input class="form-control" id="contact1" placeholder="" type="text" name="contact1" value="{{$enq['contact1']}}" required>
                                    </div>
-                                   <div class="form-group">
-                                     <label for="exampleInputEmail1">Alternate Contact No</label>
+                                   <label for="exampleInputEmail1" class="col-lg-2">Alternate Contact No</label>
+                                   <div class="col-lg-4">
                                      <input class="form-control" id="contact2" placeholder="" type="text" name="contact2" value="{{$enq['contact2']}}">
                                    </div>
-                                   <div class="form-group">
-                                     <label for="exampleInputEmail1">Email</label>
+                                 </div>
+                                 <div class="form-group">
+                                   <label for="exampleInputEmail1" class="col-lg-2">Email</label>
+                                   <div class="col-lg-10">
                                      <input class="form-control" id="email" placeholder="" type="email" name="email" value="{{$enq['email']}}">
                                    </div>
-                                   <div class="form-group">
-                                     <label for="exampleInputEmail1">Enquiry Date</label>
-                                     <input class="form-control" id="enq_date" placeholder="" type="text" name="enq_date" value="{{$enq['enquiry_date']}}">
+                                 </div>
+                                 <div class="form-group">
+                                   <label for="exampleInputFile" class="col-lg-2">Comments</label>
+                                   <div class="col-lg-10">
+                                     <textarea class="form-control" name="comments" rows="7" id="comments" required="">{{$enq['comments']}}</textarea>
                                    </div>
-                                   <div class="form-group">
-                                    <?php date_default_timezone_set('Asia/Kolkata'); ?>
-                                     <label for="exampleInputEmail1">Enquiry Time</label>
-                                     <input class="form-control" id="enq_time" placeholder="" type="text" name="enq_time" value="{{$enq['enquiry_time']}}" >
+                                 </div>
+                                 <div class="form-group">
+                                   <label for="exampleInputEmail1" class="col-lg-2">Enquiry Date</label>
+                                   <div class="col-lg-4">
+                                     <input class="form-control" id="enq_date" placeholder="" type="text" name="enq_date" value="{{$enq['enquiry_date']}}" required="">
                                    </div>
-                                 </div><!-- /.box-body -->
-                                 <div class="box-footer">
-                                  <button type="submit" class="btn btn-primary">Update</button>
-                                </div>
-                              </form>
-                              @endforeach
-                            </div>
+                                   <label for="exampleInputEmail1" class="col-lg-2">Followup Date</label>
+                                   <div class="col-lg-4">
+                                     <input class="form-control" id="followupdate" placeholder="" type="text" name="followupdate" required="" value="{{$enq['followup_date']}}">
+                                   </div>
+                                 </div>
+                              </div><!-- /.box-body -->
+                              <div class="box-footer">
+                                <button type="submit" class="btn btn-primary">Update</button>
+                              </div>
+                            </form>
+                            @endforeach
                           </div>
-                        </div><!-- /.box-body -->
-                      </div><!-- /.box -->
-                    </div>
+                        </div>
+                      </div><!-- /.box-body -->
+                    </div><!-- /.box -->
                   </div>
-                </section><!-- /.content -->
-              </aside><!-- /.right-side -->
-            </div><!-- ./wrapper -->
-            @endsection
+                </div>
+              </section><!-- /.content -->
+            </aside><!-- /.right-side -->
+          </div><!-- ./wrapper -->
+          @endsection

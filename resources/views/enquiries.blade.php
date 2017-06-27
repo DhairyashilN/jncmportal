@@ -44,10 +44,10 @@
                                    <th>Customer Name</th>
                                    <th>Address</th>
                                    <th>Contact</th>
-                                   <th>Alt. Contact</th>
                                    <th>Email</th>
+                                   <th>Comments</th>
                                    <th>Enquiry Date</th>
-                                   <th>Enquiry Time</th>
+                                   <th>Follow Up Date</th>
                                    <th>Action</th>
                                  </tr>
                                </thead>
@@ -59,13 +59,13 @@
                                    <td>{{$enq['customer_name']}}</td>
                                    <td>{{$enq['address']}}</td>
                                    <td>{{$enq['contact1']}}</td>
-                                   <td>{{$enq['contact2']}}</td>
-                                   <td>{{$enq['email']}}</td>
+                                   <td>{{!empty($enq['email']) ? $enq['email'] : "-----"}}</td>
+                                   <td>{{$enq['comments']}}</td>
                                    <td>{{$enq['enquiry_date']}}</td>
-                                   <td>{{$enq['enquiry_time']}}</td>
+                                   <td>{{!empty($enq['followup_date']) ? $enq['followup_date'] : "-----"}}</td>
                                    <td>
                                      <a href="{{url('edit_enquiry/'.$enq['id'])}}" class="btn btn-primary" title="Edit"><i class="fa fa-pencil-square" aria-hidden="true"></i></a>
-                                     <a href="{{url('delete_enquiry/'.$enq['id'])}}" class="btn btn-danger" title="Delete" onclick="confirm('Are You want to delete this record?')"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                     <a href="{{url('delete_enquiry/'.$enq['id'])}}" class="btn btn-danger" title="Delete" onclick="confirm('Are you want to delete this record?')"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                    </td>
                                  </tr>
                                  @endforeach    
@@ -76,10 +76,10 @@
                                   <th>Customer Name</th>
                                   <th>Address</th>
                                   <th>Contact</th>
-                                  <th>Alt. Contact</th>
                                   <th>Email</th>
+                                  <th>Comments</th>
                                   <th>Enquiry Date</th>
-                                  <th>Enquiry Time</th>
+                                  <th>Follow Up Date</th>
                                   <th>Action</th>
                                 </tr>
                               </tfoot>
