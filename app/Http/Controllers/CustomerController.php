@@ -28,7 +28,7 @@ class CustomerController extends Controller
      */
 	public function index()
 	{
-		$customers = Customer::where('isDelete',0)->get();
+		$customers = Customer::where('isDelete',0)->orderBy('id', 'desc')->get();
         $countries  = Country::all();
         $state      = State::all();
         $city       = City::all();

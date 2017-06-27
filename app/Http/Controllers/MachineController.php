@@ -24,7 +24,7 @@ class MachineController extends Controller
      */
     public function index()
     {
-    	$machine = Machine::where('isDelete',0)->get();
+    	$machine = Machine::where('isDelete',0)->orderBy('id', 'desc')->get();
     	return view('machine',['machine' => $machine]);
     }
 

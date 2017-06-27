@@ -26,8 +26,11 @@ class UserController extends Controller
     public function index()
     {
     	Auth::user()->isAdmin;
-    	$users = User::where('isDelete',0)->get();
-    	return view('users',['users' => $users]);
+    	$users = User::where('isDelete',0)
+        ->where('isSuperAdmin',0)
+        ->orderBy('id', 'desc')
+        ->get();
+        return view('users',['users' => $users]);
     }
 
     /**
@@ -95,11 +98,20 @@ class UserController extends Controller
     	$user                    = User::find($id);
     	$user->name        		 = $request['name'];
     	$user->email             = $request['email'];
-    	$user->password          = isset($request['password'])? bcrypt($request['password']) : $user->password;
-    	$user->isAdmin           = isset($request['privilege'])? $request['privilege'] : 0;
-    	$user->isSuperAdmin      = 0;
+        if(isset($request['password']) && empty($request['password'])){
+            $user->password = $user->password;
+        } else {
+            $user->password = bcrypt($request['password']);
+        }
+        if(empty($request['privilege'])){
+            $user->isAdmin = 0;
+        } else {
+            $user->isAdmin = $request['privilege'];
+        }
+        //$user->isAdmin           = isset($request['privilege'])? $request['privilege'] : 0;
+        $user->isSuperAdmin      = 0;
         $user->update();
-    	return redirect('users')->with('status', 'User Added Successfully');
+        return redirect('users')->with('status', 'User Added Successfully');
     }
 
     /**
