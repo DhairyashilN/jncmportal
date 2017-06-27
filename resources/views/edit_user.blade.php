@@ -55,14 +55,14 @@
                                    <div>
                                      <label for="exampleInputEmail1">Password</label>
                                      <input class="form-control" id="password" placeholder="" type="password" name="password" >
-                                   </div>
+                                   </div><br/>
                                    <div>
                                      <label for="exampleInputEmail1">Confirm Password</label>
                                      <input class="form-control" id="cpassword" placeholder="" type="password" name="cpassword">
-                                   </div>
+                                   </div><br/>
                                    <div>
-                                     <label for="exampleInputEmail1">Privilege </label>
-                                      <input id="privilege" placeholder="" type="checkbox" name="privilege" value="1"  @if($user['isAdmin'] == 1) {{'checked'}} @endif>Is Admin
+                                     {{-- <label for="exampleInputEmail1">Privilege </label> --}}
+                                      <input id="privilege" placeholder="" type="checkbox" name="privilege" value="1"  @if($user['isAdmin'] == 1) {{'checked'}} @endif>&nbsp;&nbsp;Is Admin
                                    </div>
                                  </div><!-- /.box-body -->
                                  <div class="box-footer">
