@@ -50,7 +50,8 @@
                                    </div>
                                    <div class="form-group">
                                      <label for="exampleInputEmail1">Email</label>
-                                     <input class="form-control" id="email" placeholder="" type="email" name="email" required value="{{ $user['email'] }}">
+                                     <input class="form-control" id="useremail" placeholder="" type="email" name="email" required value="{{ $user['email'] }}" readonly="">
+                                     <span id="email-warning" class="help-block" style="color:red;"></span>
                                    </div>
                                    <div>
                                      <label for="exampleInputEmail1">Password</label>
@@ -59,6 +60,7 @@
                                    <div>
                                      <label for="exampleInputEmail1">Confirm Password</label>
                                      <input class="form-control" id="cpassword" placeholder="" type="password" name="cpassword">
+                                     <span id="pass-warning" class="help-block" style="color:red;"></span>
                                    </div><br/>
                                    <div>
                                      {{-- <label for="exampleInputEmail1">Privilege </label> --}}

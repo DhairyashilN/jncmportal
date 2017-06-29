@@ -1,9 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Machine;
+use App\Customer;
 
 class MachineController extends Controller
 {
@@ -16,7 +16,6 @@ class MachineController extends Controller
     {
         $this->middleware('auth');
     }
-    
     /**
      * Show the machine list.
      *
@@ -27,7 +26,6 @@ class MachineController extends Controller
     	$machine = Machine::where('isDelete',0)->orderBy('id', 'desc')->get();
     	return view('machine',['machine' => $machine]);
     }
-
     /**
      * Show the machine form.
      *
@@ -37,7 +35,6 @@ class MachineController extends Controller
     {
     	return view('machine_form');
     }
-
     /**
      * Save the machine information.
      *
@@ -55,7 +52,6 @@ class MachineController extends Controller
     	$machine->save();
     	return redirect('machinery')->with('status', 'Machine Added Successfully');
     }
-
     /**
      * Get the machine information.
      *
@@ -67,7 +63,6 @@ class MachineController extends Controller
     	//dd($machine);
     	return view('edit_machine',compact('machine'));
     }
-
     /**
 	 * Update the specified resource in storage.
 	 *
@@ -86,7 +81,6 @@ class MachineController extends Controller
     	$machine->update();
     	return redirect('machinery')->with('status', 'Machine Updated Successfully');;
     }
-
 	/**
      * Save the machine information.
      *
@@ -101,4 +95,16 @@ class MachineController extends Controller
 		$machine->update();
 		return redirect('machinery')->with('status', 'Machine Deleted Successfully');
 	}
+    /**
+     * Get the machine count for selected machine.
+    */
+    public function getMachineCount(Request $request)
+    {
+        if (empty($request['id'])) {
+            return response()->json('Please Select Machine');
+        } else {
+            $machineCount = Customer::where('machine',$request['id'])->sum('quantity');
+            return response()->json($machineCount);
+        }
+    }
 }

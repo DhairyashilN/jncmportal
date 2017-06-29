@@ -15,7 +15,7 @@ $("#contact,#contact1,#contact2").keypress(function (e) {
 $('#cpassword').on('keyup', function(){
 	if(($('#password').val()) != ($('#cpassword').val())) {
 		$('#pass-warning').text('Password and confirm password are not matching.');
-		$('#pass-warning').css('color','red');
+		//$('#pass-warning').css('color','red');
 	} else {
 		$('#pass-warning').text('');
 	}

@@ -43,8 +43,8 @@
                                    <th>Sr. No.</th>
                                    <th>Customer Name</th>
                                    <th>Contact</th>
-                                   <th>City/Taluka</th>
-                                   <th>District</th>
+                                   {{-- <th>City/Taluka</th> --}}
+                                   {{-- <th>District</th> --}}
                                    <th>State</th>
                                    <th>Country</th>
                                    <th>Machine</th>
@@ -61,16 +61,16 @@
                                    <td>{{$srno ++}}</td>
                                    <td>{{$cust['customer_name']}}</td>
                                    <td>{{$cust['contact']}}</td>
-                                   @foreach($city as $city)
+                                   {{-- @foreach($city as $city)
                                    @if($cust['city'] == $city['id'])
                                    <td>{{$city['name']}}</td>
                                    @endif
-                                   @endforeach
-                                   @foreach($cities as $c)
+                                   @endforeach --}}
+                                   {{-- @foreach($cities as $c)
                                    @if($cust['district'] == $c['id'])
                                    <td>{{$c['name']}}</td>
                                    @endif
-                                   @endforeach
+                                   @endforeach --}}
                                    @foreach($state as $st)
                                    @if($cust['state'] == $st['id'])
                                    <td>{{$st['name']}}</td>
@@ -101,8 +101,8 @@
                                   <th>Sr. No.</th>
                                   <th>Customer Name</th>
                                   <th>Contact</th>
-                                  <th>City/Taluka</th>
-                                  <th>District</th>
+                                  {{-- <th>City/Taluka</th> --}}
+                                  {{-- <th>District</th> --}}
                                   <th>State</th>
                                   <th>Country</th>
                                   <th>Machine</th>

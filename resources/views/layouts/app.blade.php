@@ -111,15 +111,36 @@
                 "bAutoWidth": false
             });
         });
-    // When the document is ready
-    $(document).ready(function () {
-        $('#enq_date,#followupdate').datepicker({
-            format: "dd/mm/yyyy"
+        // When the document is ready
+        $(document).ready(function () {
+            $('#enq_date,#followupdate').datepicker({
+                format: "dd/mm/yyyy"
+            });
+            //select2 
+            $('select').select2();                 
         });
-
-        //select2 
-        $('select').select2();                 
-    });
+        $('#machines').change(function(){
+            $.ajax({
+                type:'POST',
+                data:{_token: '{{ csrf_token() }}',id:this.value},
+                url:'{{url('/')}}'+'/getcount',
+                success:function(data){
+                    $('#machineCount').text(data);
+                }
+            });
+        });
+        //check for email availability
+        $("#user_email").on('blur',function(){
+            var email = $('#user_email').val();
+            $.ajax({
+                url:'{{url('/')}}'+'/checkuseremail',
+                data:{_token: '{{ csrf_token() }}',email:email},
+                type:'POST',
+                success:function(data){
+                    $('#email-warning').text(data);  
+                }
+            });
+        });
 </script>
 </body>
 </html>

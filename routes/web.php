@@ -24,6 +24,7 @@ Route::post('/create', 'MachineController@create');
 Route::get('/edit_machine/{id}', 'MachineController@edit');
 Route::post('/create/{id}', 'MachineController@update');
 Route::get('/delete_machine/{id}', 'MachineController@destroy');
+Route::post('/getcount', 'MachineController@getMachineCount');
 //enquiry routes
 Route::get('/enquiries', 'EnquiryController@index');
 Route::get('/add_enquiry', 'EnquiryController@add');
@@ -46,6 +47,7 @@ Route::post('checkuser', 'UserController@check');
 Route::get('/edit_user/{id}', 'UserController@edit');
 Route::post('/create_user/{id}', 'UserController@update');
 Route::get('/delete_user/{id}', 'UserController@destroy');
+Route::post('/checkuseremail', 'UserController@checkuseremail');
 //Country routes
 Route::get('/country', 'CountryController@index');
 Route::get('/add_country', 'CountryController@add');
@@ -66,16 +68,6 @@ Route::post('/create_city', 'CityController@create');
 Route::get('/edit_city/{id}', 'CityController@edit');
 Route::post('/create_city/{id}', 'CityController@update');
 Route::get('/delete_city/{id}', 'CityController@destroy');
-
-
-
-
-
-
-
-
-
-
 //********************========== API Routes ==========********************//
 /*Route::group(['prefix' => 'api/v1' ], function()
 {

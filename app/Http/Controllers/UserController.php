@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -17,7 +16,6 @@ class UserController extends Controller
     {
         $this->middleware('auth');
     }
-
     /**
      * Show the User list.
      *
@@ -32,7 +30,6 @@ class UserController extends Controller
         ->get();
         return view('users',['users' => $users]);
     }
-
     /**
      * Show the enquiry form.
      *
@@ -42,7 +39,6 @@ class UserController extends Controller
     {
     	return view('user_form');
     }
-
     /**
      * Save the user information.
      *
@@ -67,7 +63,6 @@ class UserController extends Controller
     	$user->save();
     	return redirect('users')->with('status', 'User Added Successfully');
     }
-
     /**
      * Get the User.
      *
@@ -79,7 +74,6 @@ class UserController extends Controller
         //return view('edit_user',compact('user'));
     	return view('edit_user',['user' => $user]);
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -111,9 +105,8 @@ class UserController extends Controller
         //$user->isAdmin           = isset($request['privilege'])? $request['privilege'] : 0;
         $user->isSuperAdmin      = 0;
         $user->update();
-        return redirect('users')->with('status', 'User Added Successfully');
+        return redirect('users')->with('status', 'User Updated Successfully');
     }
-
     /**
      * Delete the user.
      *
@@ -127,10 +120,22 @@ class UserController extends Controller
         $user->update();
         return redirect('users')->with('status', 'User Deleted Successfully');
     }
-
-    public function check(Request $request)
+    /**
+     * Get the machine count for selected machine.
+    */
+    public function checkuseremail(Request $request)
     {
-        dd($request);
+        if (empty($request['email'])) {
+            return response()->json('Please enter user email');
+        } else {
+            $userEmail = User::where('email',$request['email'])->first();
+            //dd($userEmail);
+            if ($userEmail) {
+                return response()->json('This email is already taken. Please enter another email.');
+            } else {
+                return response()->json('This email is available.');
+            }
+        }
     }
 
 }
