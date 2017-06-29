@@ -2,7 +2,11 @@
         <header class="header">
             <a href="{{url('dashboard')}}" class="logo">
                 <!-- Add the class icon to your logo image or logo icon to add the margining -->
-                Admin
+                @if(Auth::user()->isSuperAdmin == 1)
+                    Super Admin
+                @else
+                    Admin
+                @endif
             </a>
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top" role="navigation">
