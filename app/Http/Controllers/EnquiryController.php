@@ -59,8 +59,8 @@ class EnquiryController extends Controller
     	$enquiry->customer_name    	= $request['customer_name'];
     	$enquiry->address    		= $request['address'];
     	$enquiry->contact1    		= $request['contact1'];
-    	$enquiry->contact2    		= isset($request['contact2'])? $request['contact2'] : '';
-    	$enquiry->email    			= isset($request['email'])? $request['email'] : '';
+    	$enquiry->contact2    		= !empty($request['contact2'])? $request['contact2'] : 0;
+    	$enquiry->email    			= !empty($request['email'])? $request['email'] : '';
     	$enquiry->enquiry_date    	= $request['enq_date'];
         $enquiry->comments          = $request['comments'];
         $enquiry->followup_date    	= $request['followupdate'];
