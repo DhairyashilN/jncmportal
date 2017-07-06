@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Country;
+use App\State;
 
 class CountryController extends Controller
 {
@@ -107,8 +108,12 @@ class CountryController extends Controller
     	$country 		= Country::find($id);
     	$country->delete();
     	return redirect('country')->with('status', 'country Deleted Successfully');
-
     }
 
-
+    public function getstate(Request $request)
+    {
+        $country = $request['country'];
+        $states = State::where('country_id',$country)->get();
+        return response()->json($states);
+    }
 }

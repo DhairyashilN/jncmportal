@@ -21,6 +21,8 @@
     <link href="{{ asset('assets/css/datepicker/datepicker.css')}}" rel="stylesheet">
     <!--Select2 -->
     <link href="{{ asset('assets/css/select2/select2.min.css')}}" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
 </head>
 <body class="skin-black">
         {{-- <nav class="navbar navbar-default navbar-static-top">
@@ -83,8 +85,7 @@
 
     <!-- Scripts -->
     {{-- <script src="{{ asset('assets/js/app.js') }}"></script> --}}
-    <!-- jQuery -->
-    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+    
     <!-- Bootstrap Core JavaScript -->
     <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/datatables/jquery.dataTables.js') }}" type="text/javascript"></script>
@@ -141,6 +142,7 @@
                 }
             });
         });
-</script>
+        
+    </script>
 </body>
 </html>

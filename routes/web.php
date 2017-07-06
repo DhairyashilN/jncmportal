@@ -55,6 +55,7 @@ Route::post('/create_country', 'CountryController@create');
 Route::get('/edit_country/{id}', 'CountryController@edit');
 Route::post('/create_country/{id}', 'CountryController@update');
 Route::get('/delete_country/{id}', 'CountryController@destroy');
+Route::post('/getstate', 'CountryController@getstate');
 //State routes
 Route::get('/state', 'StateController@index');
 Route::get('/add_state', 'StateController@add');
@@ -68,6 +69,7 @@ Route::post('/create_city', 'CityController@create');
 Route::get('/edit_city/{id}', 'CityController@edit');
 Route::post('/create_city/{id}', 'CityController@update');
 Route::get('/delete_city/{id}', 'CityController@destroy');
+Route::post('/getcity', 'CityController@getcity');
 //********************========== API Routes ==========********************//
 /*Route::group(['prefix' => 'api/v1' ], function()
 {

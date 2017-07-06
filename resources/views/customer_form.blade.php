@@ -55,92 +55,83 @@
                     </div>
                   </div>
                   <div class="form-group">
+                    <label for="exampleInputEmail1" class="col-lg-2">Country</label>
+                    <div class="col-lg-4">
+                      <select class="form-control" id="country" name="country">
+                        <option value="">Select Country</option>
+                        @foreach($countries as $con)
+                        <option value="{{$con['id']}}">{{$con['name']}}</option>
+                        @endforeach
+                      </select>
+                    </div>
+                    <label for="exampleInputEmail1" class="col-lg-2">State</label>
+                    <div class="col-lg-4">
+                     <select class="form-control" id="state" name="state">
+                       <option value="">Select State</option> 
+                     </select>
+                   </div>
+                 </div>
+                 <div class="form-group">
                    <label for="exampleInputEmail1" class="col-lg-2">City/Taluka</label>
                    <div class="col-lg-4">
                      <select class="form-control" id="city" name="city">
                       <option value="">Select City</option>
-                      @foreach($city as $ct)
-                      <option value="{{$ct['id']}}">{{$ct['name']}}</option>
-                      @endforeach
                     </select>
                   </div>
                   <label for="exampleInputEmail1" class="col-lg-2">District</label>
                   <div class="col-lg-4">
                    <select class="form-control" id="district" name="district">
                     <option value="">Select District</option>
-                    @foreach($city as $dist)
-                    <option value="{{$dist['id']}}">{{$dist['name']}}</option>
-                    @endforeach
                   </select>
                 </div>
               </div>
               <div class="form-group">
-                <label for="exampleInputEmail1" class="col-lg-2">State</label>
-                <div class="col-lg-4">
-                 <select class="form-control" id="state" name="state">
-                  <option value="">Select State</option>
-                  @foreach($state as $st)
-                  <option value="{{$st['id']}}">{{$st['name']}}</option>
-                  @endforeach
-                </select>
-              </div>
-              <label for="exampleInputEmail1" class="col-lg-2">Country</label>
-              <div class="col-lg-4">
-                <select class="form-control" id="country" name="country">
-                  <option value="">Select Country</option>
-                  @foreach($countries as $con)
-                  <option value="{{$con['id']}}">{{$con['name']}}</option>
-                  @endforeach
-                </select>
-              </div>
-            </div>
-            <div class="form-group">
-             <label for="exampleInputEmail1" class="col-lg-2">Contact</label>
-             <div class="col-lg-4">
-               <input class="form-control" id="contact" placeholder="" type="text" name="contact">
+               <label for="exampleInputEmail1" class="col-lg-2">Contact</label>
+               <div class="col-lg-4">
+                 <input class="form-control" id="contact" placeholder="" type="text" name="contact">
+               </div>
+               <label for="exampleInputEmail1" class="col-lg-2">Email</label>
+               <div class="col-lg-4">
+                 <input class="form-control" id="email" placeholder="" type="email" name="email">
+               </div>
              </div>
-             <label for="exampleInputEmail1" class="col-lg-2">Email</label>
-             <div class="col-lg-4">
-               <input class="form-control" id="email" placeholder="" type="email" name="email">
+             <div class="form-group">
+               <label for="exampleInputEmail1" class="col-lg-2">Machine</label>
+               <div class="col-lg-4">
+                <select class="form-control" id="machine" name="machine">
+                  <option value="">Select Machine</option>
+                  @foreach($machine as $mac)
+                  <option value="{{$mac['id']}}">{{$mac['machine_name']}}</option>
+                  @endforeach
+                </select>
+              </div>
+              <label for="exampleInputEmail1" class="col-lg-2">Quantity</label>
+              <div class="col-lg-4">
+               <input class="form-control" id="quantity" placeholder="" type="text" name="quantity">
              </div>
            </div>
            <div class="form-group">
-             <label for="exampleInputEmail1" class="col-lg-2">Machine</label>
+             <label for="exampleInputEmail1" class="col-lg-2">Purchase Date</label>
              <div class="col-lg-4">
-              <select class="form-control" id="machine" name="machine">
-                <option value="">Select Machine</option>
-                @foreach($machine as $mac)
-                <option value="{{$mac['id']}}">{{$mac['machine_name']}}</option>
-                @endforeach
+               <input class="form-control" id="enq_date" placeholder="" type="text" name="purchase_date">
+             </div>
+             <label for="exampleInputEmail1" class="col-lg-2">Purchase Year</label>
+             <div class="col-lg-4">
+              <select class="form-control" id="purchase_year" name="purchase_year">
+                <option value="">Select Purchase Year</option>
+                @for($y=1947; $y<=date('Y'); $y++)
+                <option value="{{$y}}">{{$y}}</option>
+                @endfor
               </select>
             </div>
-            <label for="exampleInputEmail1" class="col-lg-2">Quantity</label>
-            <div class="col-lg-4">
-             <input class="form-control" id="quantity" placeholder="" type="text" name="quantity">
-           </div>
-         </div>
-         <div class="form-group">
-           <label for="exampleInputEmail1" class="col-lg-2">Purchase Date</label>
-           <div class="col-lg-4">
-             <input class="form-control" id="enq_date" placeholder="" type="text" name="purchase_date">
-           </div>
-           <label for="exampleInputEmail1" class="col-lg-2">Purchase Year</label>
-           <div class="col-lg-4">
-            <select class="form-control" id="purchase_year" name="purchase_year">
-              <option value="">Select Purchase Year</option>
-              @for($y=1947; $y<=date('Y'); $y++)
-              <option value="{{$y}}">{{$y}}</option>
-              @endfor
-            </select>
           </div>
+        </div><!-- /.box-body -->
+        <div class="box-footer">
+          <button type="submit" class="btn btn-primary">Submit</button>
         </div>
-      </div><!-- /.box-body -->
-      <div class="box-footer">
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
-</div>
 </div><!-- /.box-body -->
 </div><!-- /.box -->
 </div>
@@ -148,4 +139,38 @@
 </section><!-- /.content -->
 </aside><!-- /.right-side -->
 </div><!-- ./wrapper -->
+<script type="text/javascript">
+  //get states for selected country
+  $("#country").on('change',function(){
+    var country = $('#country').val();
+    var toAppend = '';
+    $.ajax({
+      url:'{{url('/')}}'+'/getstate',
+      data:{_token: '{{ csrf_token() }}',country:country},
+      type:'POST',
+      success:function(data){
+        $.each(data,function(i,o){
+         toAppend += '<option value='+o.id+'>' +o.name+'</option>';
+       });
+        $('#state').html(toAppend); 
+      }
+    });
+  });
+  //get district for selected state
+  $("#state").on('change',function(){
+    var state = $('#state').val();
+    var toAppend = '';
+    $.ajax({
+      url:'{{url('/')}}'+'/getcity',
+      data:{_token: '{{ csrf_token() }}',state:state},
+      type:'POST',
+      success:function(data){
+        $.each(data,function(i,o){
+         toAppend += '<option value='+o.id+'>' +o.name+'</option>';
+       });
+        $('#city,#district').html(toAppend); 
+      }
+    });
+  });
+</script>
 @endsection

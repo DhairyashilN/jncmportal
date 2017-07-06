@@ -107,5 +107,12 @@ class CityController extends Controller
     	return redirect('city')->with('status', 'City Deleted Successfully');
     }
 
+    public function getcity(Request $request)
+    {
+        $state  = $request['state'];
+        $city   = City::where('state_id',$state)->get();
+        return response()->json($city);
+    }
+
 
 }

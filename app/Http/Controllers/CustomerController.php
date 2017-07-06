@@ -39,7 +39,7 @@ class CustomerController extends Controller
     }
 
 	/**
-     * Show the enquiry form.
+     * Show the add customer  form.
      *
      * @return \Illuminate\Http\Response
      */
@@ -48,12 +48,8 @@ class CustomerController extends Controller
         ini_set('max_execution_time', 0);
         ini_set('memory_limit', '1000M');
         $countries  = Country::all();
-        $state      = State::all();
-        $city       = City::all();
-        $district   = City::all();
         $machine = Machine::where('isDelete',0)->get();
-        return view('customer_form',['machine' => $machine, 'countries' => $countries,'state' => $state,
-            'city' => $city]);
+        return view('customer_form',['machine' => $machine, 'countries' => $countries]);
     }
 
     /**
