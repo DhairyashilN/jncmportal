@@ -43,8 +43,8 @@
                                    <th>Sr. No.</th>
                                    <th>Customer Name</th>
                                    <th>Contact</th>
-                                   {{-- <th>City/Taluka</th> --}}
-                                   {{-- <th>District</th> --}}
+                                   <th>City/Taluka</th>
+                                   <th>District</th>
                                    <th>State</th>
                                    <th>Country</th>
                                    <th>Machine</th>
@@ -61,16 +61,16 @@
                                    <td>{{$srno ++}}</td>
                                    <td>{{$cust['customer_name']}}</td>
                                    <td>{{$cust['contact']}}</td>
-                                   {{-- @foreach($city as $city)
+                                   @foreach($cities as $city)
                                    @if($cust['city'] == $city['id'])
                                    <td>{{$city['name']}}</td>
                                    @endif
-                                   @endforeach --}}
-                                   {{-- @foreach($cities as $c)
+                                   @endforeach
+                                   @foreach($cities as $c)
                                    @if($cust['district'] == $c['id'])
                                    <td>{{$c['name']}}</td>
                                    @endif
-                                   @endforeach --}}
+                                   @endforeach
                                    @foreach($state as $st)
                                    @if($cust['state'] == $st['id'])
                                    <td>{{$st['name']}}</td>
@@ -90,8 +90,8 @@
                                    <td>{{$cust['purchase_date']}}</td>
                                    <td>{{$cust['purchase_year']}}</td>
                                    <td>
-                                     <a href="{{url('edit_customer/'.$cust['id'])}}" class="btn btn-primary" title="Edit"><i class="fa fa-pencil-square" aria-hidden="true"></i></a>
-                                     <a href="{{url('delete_customer/'.$cust['id'])}}" class="btn btn-danger" title="Delete" onclick="confirm('Are You want to delete this record?')"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                     <a href="{{url('edit_customer/'.$cust['id'])}}" class="btn btn-primary btn-xs" title="Edit"><i class="fa fa-pencil-square" aria-hidden="true"></i></a>
+                                     <a href="{{url('delete_customer/'.$cust['id'])}}" class="btn btn-danger btn-xs" title="Delete" onclick="confirm('Are You want to delete this record?')"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                    </td>
                                  </tr>
                                  @endforeach    
@@ -101,8 +101,8 @@
                                   <th>Sr. No.</th>
                                   <th>Customer Name</th>
                                   <th>Contact</th>
-                                  {{-- <th>City/Taluka</th> --}}
-                                  {{-- <th>District</th> --}}
+                                  <th>City/Taluka</th>
+                                  <th>District</th>
                                   <th>State</th>
                                   <th>Country</th>
                                   <th>Machine</th>

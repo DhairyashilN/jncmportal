@@ -57,41 +57,41 @@
                                     </div>
                                   </div>
                                   <div class="form-group">
-                                   <label for="exampleInputEmail1" class="col-lg-2">City/Taluka</label>
-                                   <div class="col-lg-4">
-                                     <select class="form-control" id="city" name="city">
-                                      <option value="">Select City</option>
-                                      @foreach($city as $dist)
-                                      <option value="{{$dist['id']}}" @if($cust['district'] == $dist['id']){{'selected'}} @endif>{{$dist['name']}}</option>
+                                    <label for="exampleInputEmail1" class="col-lg-2">Country</label>
+                                    <div class="col-lg-4">
+                                      <select class="form-control" id="country" name="country">
+                                        <option value="">Select Country</option>
+                                        @foreach($countries as $con)
+                                        <option value="{{$con['id']}}" @if($cust['country'] == $con['id']){{'selected'}} @endif>{{$con['name']}}</option>
+                                        @endforeach
+                                      </select>
+                                    </div>
+                                    <label for="exampleInputEmail1" class="col-lg-2">State</label>
+                                    <div class="col-lg-4">
+                                     <select class="form-control" id="state" name="state">
+                                      <option value="">Select State</option>
+                                      @foreach($state as $st)
+                                      <option value="{{$st['id']}}" @if($cust['state'] == $st['id']){{'selected'}} @endif>{{$st['name']}}</option>
                                       @endforeach
                                     </select>
                                   </div>
-                                  <label for="exampleInputEmail1" class="col-lg-2">District</label>
-                                  <div class="col-lg-4">
-                                   <select class="form-control" id="district" name="district">
+                                </div>
+                                <div class="form-group">
+                                 <label for="exampleInputEmail1" class="col-lg-2">City/Taluka</label>
+                                 <div class="col-lg-4">
+                                   <select class="form-control" id="city" name="city">
                                     <option value="">Select City</option>
-                                    @foreach($state as $st)
-                                    <option value="{{$st['id']}}" @if($cust['state'] == $st['id']){{'selected'}} @endif>{{$st['name']}}</option>
+                                    @foreach($city as $st)
+                                    <option value="{{$st['id']}}" @if($cust['city'] == $st['id']){{'selected'}} @endif>{{$st['name']}}</option>
                                     @endforeach
                                   </select>
                                 </div>
-                              </div>
-                              <div class="form-group">
-                                <label for="exampleInputEmail1" class="col-lg-2">State</label>
+                                <label for="exampleInputEmail1" class="col-lg-2">District</label>
                                 <div class="col-lg-4">
-                                 <select class="form-control" id="state" name="state">
-                                  <option value="">Select State</option>
-                                  @foreach($state as $st)
-                                  <option value="{{$st['id']}}" @if($cust['state'] == $st['id']){{'selected'}} @endif>{{$st['name']}}</option>
-                                  @endforeach
-                                </select>
-                              </div>
-                              <label for="exampleInputEmail1" class="col-lg-2">Country</label>
-                              <div class="col-lg-4">
-                                <select class="form-control" id="country" name="country">
-                                  <option value="">Select Country</option>
-                                  @foreach($countries as $con)
-                                  <option value="{{$con['id']}}" @if($cust['country'] == $con['id']){{'selected'}} @endif>{{$con['name']}}</option>
+                                 <select class="form-control" id="district" name="district">
+                                  <option value="">Select City</option>
+                                  @foreach($city as $dist)
+                                  <option value="{{$dist['id']}}" @if($cust['district'] == $dist['id']){{'selected'}} @endif>{{$dist['name']}}</option>
                                   @endforeach
                                 </select>
                               </div>
@@ -151,4 +151,38 @@
       </section><!-- /.content -->
     </aside><!-- /.right-side -->
   </div><!-- ./wrapper -->
-  @endsection
+  <script type="text/javascript">
+  //get states for selected country
+  $("#country").on('change',function(){
+    var country = $('#country').val();
+    var toAppend = '';
+    $.ajax({
+      url:'{{url('/')}}'+'/getstate',
+      data:{_token: '{{ csrf_token() }}',country:country},
+      type:'POST',
+      success:function(data){
+        $.each(data,function(i,o){
+         toAppend += '<option value='+o.id+'>' +o.name+'</option>';
+       });
+        $('#state').html(toAppend); 
+      }
+    });
+  });
+  //get district for selected state
+  $("#state").on('change',function(){
+    var state = $('#state').val();
+    var toAppend = '';
+    $.ajax({
+      url:'{{url('/')}}'+'/getcity',
+      data:{_token: '{{ csrf_token() }}',state:state},
+      type:'POST',
+      success:function(data){
+        $.each(data,function(i,o){
+         toAppend += '<option value='+o.id+'>' +o.name+'</option>';
+       });
+        $('#city,#district').html(toAppend); 
+      }
+    });
+  });
+</script>
+@endsection
