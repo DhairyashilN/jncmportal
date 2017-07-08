@@ -60,7 +60,7 @@
                                  <tr>
                                    <td>{{$srno ++}}</td>
                                    <td>{{$cust['customer_name']}}</td>
-                                   <td>{{$cust['contact']}}</td>
+                                   <td>@if($cust['contact'] == '' || $cust['contact'] == NULL) {{ 'NA' }} @else {{$cust['contact']}} @endif</td>
                                    @foreach($cities as $city)
                                    @if($cust['city'] == $city['id'])
                                    <td>{{$city['name']}}</td>
