@@ -130,6 +130,26 @@
                 }
             });
         });
+        $('#countries').change(function(){
+            $.ajax({
+                type:'POST',
+                data:{_token: '{{ csrf_token() }}',id:this.value},
+                url:'{{url('/')}}'+'/getcustomerbyCountry',
+                success:function(data){
+                    $('#CountryCustomersCount').text(data);
+                }
+            });
+        });
+        $('#cities').change(function(){
+            $.ajax({
+                type:'POST',
+                data:{_token: '{{ csrf_token() }}',id:this.value},
+                url:'{{url('/')}}'+'/getcustomerbyCity',
+                success:function(data){
+                    $('#CityCustomersCount').text(data);
+                }
+            });
+        });
         //check for email availability
         $("#user_email").on('blur',function(){
             var email = $('#user_email').val();

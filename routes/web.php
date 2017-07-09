@@ -39,6 +39,8 @@ Route::post('/create_customer', 'CustomerController@create');
 Route::get('/edit_customer/{id}', 'CustomerController@edit');
 Route::post('/create_customer/{id}', 'CustomerController@update');
 Route::get('/delete_customer/{id}', 'CustomerController@destroy');
+Route::post('/getcustomerbyCountry', 'CustomerController@getcustomerbyCountry');
+Route::post('/getcustomerbyCity', 'CustomerController@getcustomerbyCity');
 //user routes
 Route::get('/users', 'UserController@index');
 Route::get('/add_user', 'UserController@add');

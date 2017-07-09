@@ -160,8 +160,39 @@ class CustomerController extends Controller
         $customer->isDelete = 1;
         $customer->update();
         return redirect('customers')->with('status', 'Customer Deleted Successfully');
-
     }
+
+    /**
+     * Get customers by country.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getcustomerbyCountry(Request $request)
+    {
+        if (empty($request['id'])) {
+            return response()->json('Please Select Country');
+        } else {
+            $CustomerCount = Customer::where('country',$request['id'])->count();
+            return response()->json($CustomerCount);
+        }
+    }
+
+    /**
+     * Get customers by Taluka(Tehsil) / City.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getcustomerbyCity(Request $request)
+    {
+        if (empty($request['id'])) {
+            return response()->json('Please Select City');
+        } else {
+            $CustomerCount = Customer::where('city',$request['id'])->orWhere('district',$request['id'])->count();
+            return response()->json($CustomerCount);
+        }
+    }
+
+
 
 
 

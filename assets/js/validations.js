@@ -1,7 +1,7 @@
 $("#customer_name,#user_name,#country_name,#state_name,#city_name").keypress(function(event){
 	var inputValue = event.which;
 	if(!(inputValue >= 65 && inputValue <= 122) && (inputValue != 32 && inputValue != 0) && (inputValue != 46)) { 
-		event.preventDefault(); 
+		return false; 
 	}
 });
 
