@@ -72,6 +72,16 @@
                                      </div>
                                    </div>
                                    <div class="form-group">
+                                    <label for="exampleInputEmail1" class="col-lg-2">Enquiry For</label>
+                                     <div class="col-lg-10">
+                                       @if(isset($machines) && !empty($machines))
+                                       @foreach($machines as $mrow)
+                                       <input type="checkbox" name="machine_name[]" id="machine_{{$mrow['id']}}" value="{{ $mrow['id'] }}" /> {{$mrow['machine_name']}} <br>
+                                       @endforeach
+                                       @endif
+                                     </div>
+                                   </div>
+                                   <div class="form-group">
                                      <label for="exampleInputFile" class="col-lg-2">Comments</label>
                                      <div class="col-lg-10">
                                        <textarea class="form-control" name="comments" rows="7" id="comments" required=""></textarea>

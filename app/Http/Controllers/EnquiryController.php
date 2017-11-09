@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Customerenquiry;
+use App\Machine;
 
 class EnquiryController extends Controller
 {
@@ -35,7 +36,8 @@ class EnquiryController extends Controller
      */
     public function add()
     {
-    	return view('enquiry_form');
+        $machine = Machine::where('isDelete',0)->get();
+    	return view('enquiry_form',['machines'=>$machine]);
     }
 
     /**
@@ -53,7 +55,7 @@ class EnquiryController extends Controller
     		'enq_date' => 'required',
             'comments' => 'required',
             'followupdate' => 'required',
-            ]);
+        ]);
         // save enquiry record in products table.
     	$enquiry          			= new Customerenquiry;
     	$enquiry->customer_name    	= $request['customer_name'];
@@ -64,7 +66,9 @@ class EnquiryController extends Controller
     	$enquiry->enquiry_date    	= $request['enq_date'];
         $enquiry->comments          = $request['comments'];
         $enquiry->followup_date    	= $request['followupdate'];
-        $enquiry->save();
+        if ($enquiry->save()) {
+            
+        }
         return redirect('enquiries')->with('status', 'Enquiry Added Successfully');
     }
 
@@ -76,7 +80,7 @@ class EnquiryController extends Controller
     public function edit($id="")
     {
     	$enquiry = Customerenquiry::where('id',$id)->get();
-    	//dd($machine);
+    	//dd($enquirt);
     	return view('edit_enquiry',compact('enquiry'));
     }
 
@@ -96,7 +100,7 @@ class EnquiryController extends Controller
     		'enq_date' => 'required',
     		'comments' => 'required',
             'followupdate' => 'required',
-            ]);
+        ]);
 
     	$enquiry          			= Customerenquiry::find($id);
     	$enquiry->customer_name    	= $request['customer_name'];
@@ -111,9 +115,6 @@ class EnquiryController extends Controller
         return redirect('enquiries')->with('status', 'Enquiry Updated Successfully');;
     }
 
-
-
-
     /**
      * Delete the enquiry.
      *
@@ -121,12 +122,11 @@ class EnquiryController extends Controller
      */
     public function destroy($id=" ")
     {
-        // delete machine record.
+      // delete enquirt record.
       $enquiry 		= Customerenquiry::find($id);
-    	//dd($machine);
+      //dd($enquirt);
       $enquiry->isDelete = 1;
       $enquiry->update();
       return redirect('enquiries')->with('status', 'Enquiry Deleted Successfully');
-
   }
 }
