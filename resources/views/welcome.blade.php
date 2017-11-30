@@ -19,7 +19,7 @@
             height: 100vh;
             margin: 0;
         }
-        .head-block{margin: 140px 0px;}
+        .head-block{margin: 100px 0px;}
         .content {text-align: center;font-weight: bold;}
         .title {font-size: 80px;font-weight: bold;}
         .links > a {
@@ -37,15 +37,17 @@
     <div class="container">
         <div class="head-block">
             <div class="row">
-                <div class="col-lg-12 page-header">
-                <h2 class="content title">Jay Navnath </h2>
-                <h1 class="content">Engineering Works</h1>
-                </div>
+                {{-- <div class="col-lg-12 page-header"> --}}
+                {{-- <h2 class="content title">Jay Navnath </h2>
+                <h1 class="content">Engineering Works</h1> --}}
+                <img src="{{URL::asset('assets/images/hmscreen.jpg')}}" alt="Home Screen" style="width:500px;height:300px;margin:0px auto;" class="img img-responsive" >
+                {{-- </div> --}}
             </div>
 
             <div class="row">
-                <div class="col-lg-12">
-                <h3 class="content">Customer Record & Enquiry Management Portal</h3>
+                <div class="col-lg-12 content">
+                <h3><b>Customer Record & Enquiry Management Portal</b></h3><br>
+                <a href="{{url('/login')}}" class="btn btn-primary">Login</a>
                 </div>
             </div>
         </div>

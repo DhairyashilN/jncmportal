@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Customerenquiry;
 use App\Machine;
+use App\Enq_machine_rel;
 
 class EnquiryController extends Controller
 {
@@ -37,7 +38,7 @@ class EnquiryController extends Controller
     public function add()
     {
         $machine = Machine::where('isDelete',0)->get();
-    	return view('enquiry_form',['machines'=>$machine]);
+        return view('enquiry_form',['machines'=>$machine]);
     }
 
     /**
@@ -67,9 +68,14 @@ class EnquiryController extends Controller
         $enquiry->comments          = $request['comments'];
         $enquiry->followup_date    	= $request['followupdate'];
         if ($enquiry->save()) {
-            
+            $machinerel = new Enq_machine_rel;
+            foreach ($request['machine_name'] as $row) {
+                $machinerel->machine_id = $row;
+                $machinerel->enquiry_id = $enquiry->id;
+                $machinerel->save();
+            }
+            return redirect('enquiries')->with('status', 'Enquiry Added Successfully');
         }
-        return redirect('enquiries')->with('status', 'Enquiry Added Successfully');
     }
 
     /**
@@ -79,9 +85,11 @@ class EnquiryController extends Controller
      */
     public function edit($id="")
     {
-    	$enquiry = Customerenquiry::where('id',$id)->get();
-    	//dd($enquirt);
-    	return view('edit_enquiry',compact('enquiry'));
+        $enquiry = Customerenquiry::where('id',$id)->get();
+    	$enquiry_rel = Enq_machine_rel::where('enquiry_id',$id)->get()->toArray();
+        $machine = Machine::where('isDelete',0)->get();
+    	// dd($enquiry_rel);
+    	return view('edit_enquiry',['enquiry'=> $enquiry,'machines'=>$machine,'enquiry_rel'=>$enquiry_rel]);
     }
 
     /**

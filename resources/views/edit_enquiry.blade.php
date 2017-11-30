@@ -44,34 +44,35 @@
                                 <form class="form-horizontal" role="form" action="{{ url('create_enquiry/'.$enq['id'])}}" method="post">
                                   {{csrf_field()}}
                                   <div class="box-body">
-                                  <div class="form-group">
-                                    <label for="exampleInputEmail1" class="col-lg-2">Customer Name</label>
-                                    <div class="col-lg-10">
-                                    <input class="form-control" id="customer_name" placeholder="" type="text" name="customer_name"  value="{{$enq['customer_name']}}" required>
+                                    <div class="form-group">
+                                      <label for="exampleInputEmail1" class="col-lg-2">Customer Name</label>
+                                      <div class="col-lg-10">
+                                        <input class="form-control" id="customer_name" placeholder="" type="text" name="customer_name"  value="{{$enq['customer_name']}}" required>
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                     <label for="exampleInputFile" class="col-lg-2">Address</label>
+                                     <div class="col-lg-10">
+                                       <textarea class="form-control" name="address" rows="5" id="address">{{$enq['address']}}</textarea>
+                                     </div>
                                    </div>
-                                 </div>
-                                 <div class="form-group">
-                                   <label for="exampleInputFile" class="col-lg-2">Address</label>
-                                   <div class="col-lg-10">
-                                     <textarea class="form-control" name="address" rows="5" id="address">{{$enq['address']}}</textarea>
+                                   <div class="form-group">
+                                     <label for="exampleInputEmail1" class="col-lg-2">Contact No</label>
+                                     <div class="col-lg-4">
+                                       <input class="form-control" id="contact1" placeholder="" type="text" name="contact1" value="{{$enq['contact1']}}" required>
+                                     </div>
+                                     <label for="exampleInputEmail1" class="col-lg-2">Alternate Contact No</label>
+                                     <div class="col-lg-4">
+                                       <input class="form-control" id="contact2" placeholder="" type="text" name="contact2" value="{{$enq['contact2']}}">
+                                     </div>
                                    </div>
-                                 </div>
-                                 <div class="form-group">
-                                   <label for="exampleInputEmail1" class="col-lg-2">Contact No</label>
-                                   <div class="col-lg-4">
-                                     <input class="form-control" id="contact1" placeholder="" type="text" name="contact1" value="{{$enq['contact1']}}" required>
+                                   <div class="form-group">
+                                     <label for="exampleInputEmail1" class="col-lg-2">Email</label>
+                                     <div class="col-lg-10">
+                                       <input class="form-control" id="email" placeholder="" type="email" name="email" value="{{$enq['email']}}">
+                                     </div>
                                    </div>
-                                   <label for="exampleInputEmail1" class="col-lg-2">Alternate Contact No</label>
-                                   <div class="col-lg-4">
-                                     <input class="form-control" id="contact2" placeholder="" type="text" name="contact2" value="{{$enq['contact2']}}">
-                                   </div>
-                                 </div>
-                                 <div class="form-group">
-                                   <label for="exampleInputEmail1" class="col-lg-2">Email</label>
-                                   <div class="col-lg-10">
-                                     <input class="form-control" id="email" placeholder="" type="email" name="email" value="{{$enq['email']}}">
-                                   </div>
-                                 </div>
+
                                  <div class="form-group">
                                    <label for="exampleInputFile" class="col-lg-2">Comments</label>
                                    <div class="col-lg-10">
@@ -88,8 +89,8 @@
                                      <input class="form-control" id="followupdate" placeholder="" type="text" name="followupdate" required="" value="{{$enq['followup_date']}}">
                                    </div>
                                  </div>
-                              </div><!-- /.box-body -->
-                              <div class="box-footer">
+                               </div><!-- /.box-body -->
+                               <div class="box-footer">
                                 <button type="submit" class="btn btn-primary">Update</button>
                               </div>
                             </form>
