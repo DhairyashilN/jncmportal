@@ -20,7 +20,7 @@
 				<div class="col-xs-12">
 					<div class="box">
 						<div class="box-header">
-            <h3 class="box-title"><a href="{{ url('/add_customer') }}"> <button class="btn btn-primary"><i class="fa fa-plus"></i> Add Customer</button></a></h3>                                   
+              <h3 class="box-title"><a href="{{ url('/add_customer') }}"> <button class="btn btn-primary"><i class="fa fa-plus"></i> Add Customer</button></a></h3>                                   
             </div><!-- /.box-header-->
             <div class="box-body">
               @if (session('status'))
@@ -43,10 +43,6 @@
                      <th>Sr. No.</th>
                      <th>Customer Name</th>
                      <th>Contact</th>
-                     <th>City/Taluka</th>
-                     <th>District</th>
-                     <th>State</th>
-                     <th>Country</th>
                      <th>Machine</th>
                      <th>Quantity</th>
                      <th>Purchase Date</th>
@@ -61,26 +57,6 @@
                      <td>{{$srno ++}}</td>
                      <td>{{$cust['customer_name']}}</td>
                      <td>@if($cust['contact'] == '' || $cust['contact'] == NULL) {{ 'NA' }} @else {{$cust['contact']}} @endif</td>
-                     @foreach($cities as $city)
-                     @if($cust['city'] == $city['id'])
-                     <td>{{$city['name']}}</td>
-                     @endif
-                     @endforeach
-                     @foreach($cities as $c)
-                     @if($cust['district'] == $c['id'])
-                     <td>{{$c['name']}}</td>
-                     @endif
-                     @endforeach
-                     @foreach($state as $st)
-                     @if($cust['state'] == $st['id'])
-                     <td>{{$st['name']}}</td>
-                     @endif
-                     @endforeach
-                     @foreach($countries as $cy)
-                     @if($cust['country'] == $cy['id'])
-                     <td>{{$cy['name']}}</td>
-                     @endif
-                     @endforeach
                      @foreach($machine as $mc)
                      @if($cust['machine'] == $mc['id'])
                      <td>{{$mc['machine_name']}}</td>
@@ -101,10 +77,6 @@
                     <th>Sr. No.</th>
                     <th>Customer Name</th>
                     <th>Contact</th>
-                    <th>City/Taluka</th>
-                    <th>District</th>
-                    <th>State</th>
-                    <th>Country</th>
                     <th>Machine</th>
                     <th>Quantity</th>
                     <th>Purchase Date</th>

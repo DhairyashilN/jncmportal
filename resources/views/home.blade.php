@@ -153,11 +153,10 @@
                         </div>
                         <form role="form">
                             <select class="form-control" id="cities">
-                                {{ $city = App\City::get()}}
                                 @if(!empty($city))
                                 <option value="">Select Taluka or City</option>
                                 @foreach($city as $con)
-                                <option value="{{$con->id}}">{{$con->name}}</option>
+                                <option value="{{$con['id']}}">{{$con['name']}}</option>
                                 @endforeach
                                 @endif
                             </select>

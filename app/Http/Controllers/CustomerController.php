@@ -31,13 +31,8 @@ class CustomerController extends Controller
 	public function index()
 	{
 		$customers = Customer::where('isDelete',0)->orderBy('id', 'desc')->get();
-        $countries  = Country::all();
-        $state      = State::all();
-        $city       = City::all();
-        $cities     = City::all();
-        $district   = City::all();
         $machine = Machine::where('isDelete',0)->get();
-        return view('customers',['customers' => $customers,'machine' => $machine, 'countries' => $countries,'state' => $state,'city' => $city, 'cities' => $cities]);
+        return view('customers',['customers' => $customers,'machine' => $machine]);
     }
 
 	/**
